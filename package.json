@@ -11,6 +11,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gemoji": "^4.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "sequelize": "^4.20.3",
     "webpack-dev-server": "^2.9.3"
+  },
+  "dependencies": {
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
   }
 }

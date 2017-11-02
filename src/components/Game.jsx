@@ -1,5 +1,10 @@
 import React from 'react'
 import Board from './Board.jsx'
+
+const gemoji = require('gemoji')
+
+
+
 // /* eslint-disable */
 
 // class Square extends React.Component {
