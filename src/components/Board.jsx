@@ -3,16 +3,15 @@ import React from 'react'
 
  /* eslint-disable */
 
-class Square extends React.Component {
-  render() {
-    let x = 'x'
-    return (
-      <button className="square" onClick={this.props.onClick}>
+const Square = (props) => {
+  let x = 'x'
+  return (  
+      <button className="square" onClick={props.onClick}>
         {x}
       </button>
-    );
-  }
+    )
 }
+
 
 class Board extends React.Component {
   setSquareNumbers(n) {

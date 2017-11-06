@@ -55,6 +55,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div>
+        <h1>🙈🙈</h1>   
           <Board />
         </div>
         <div className="game-info">

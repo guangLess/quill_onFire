@@ -1,13 +1,13 @@
-const {STRING} = require('sequelize')
+const {STRING, ARRAY, TEXT} = require('sequelize')
 const db = require('./connection')
 
 module.exports = db.define('emojis', {
   description: STRING,
-  name: STRING,
+  names: ARRAY(TEXT),
   emoji: STRING,
-  category: STRING, 
+  category: STRING
 })
-
+ 
 /*
 category: 'nature',
   description: 'dog face',
