@@ -1,61 +1,14 @@
 import React from 'react'
 import Board from './Board.jsx'
+import P5Wrapper from 'react-p5-wrapper'
+import {sketch} from './sketch'
 
-const gemoji = require('gemoji')
-
-
-
-// /* eslint-disable */
-
-// class Square extends React.Component {
-//   render() {
-//     let x = 'x'
-//     return (
-//       <button className="square" onClick={this.props.onClick}>
-//         {x}
-//       </button>
-//     );
-//   }
-// }
-
-// class Board extends React.Component {
-//   setSquareNumbers(n){
-//     return Array(n).fill(1)
-//   }
-  
-
-//   clickHandler(){
-//     console.log("clicked add selected index after")
-//   }
-
- 
-//   renderSquare(i) {
-//     return <Square onClick={this.clickHandler}/ >;
-//   }
-
-//   render() {
-//     const status = 'Next player: X';
-//     let size = this.setSquareNumbers(9)
-//     return (
-//       <div>
-//       {
-//           size.map(ele => (
-//             <div className="board-row"> 
-//             {this.renderSquare(0)}
-//             </div> 
-//           ))
-//       }
-//       </div>
-//     );
-//   }
-// }
-
-class Game extends React.Component {
-  render() {
+const Game = () =>  {
     return (
       <div className="game">
         <div>
-        <h1>🙈🙈</h1>   
+        <h1>🙈🙈Hello</h1>   
+        <P5Wrapper sketch={sketch} />
           <Board />
         </div>
         <div className="game-info">
@@ -64,8 +17,6 @@ class Game extends React.Component {
         </div>
       </div>
     );
-  }
 }
-  
-export default Game;
 
+export default Game;

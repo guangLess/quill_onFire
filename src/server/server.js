@@ -6,10 +6,10 @@ const app = express()
     // .use(require('./webpack-middleware'))
     // .use(express.static(join(__dirname, '/../dist')))
     .use('/api', require('./api'))
-    // .get('*/', (req, res) => {
-    //     res.sendFile(join(__dirname, '/../index.html'))
-    //     //console.log("====>", __dirname , join(__dirname, '..','index.html'))
-    // })
+    .get('/*', (req, res) => {
+        res.sendFile(join(__dirname, '..', '..','dist', 'index.html'))
+        //console.log("====>", __dirname , join(__dirname, '..','index.html'))
+    })
 
     process.env.PORT = 4000
 
@@ -17,3 +17,8 @@ const sever = app.listen(process.env.PORT || 1337, () =>
     console.log("listens on port",process.env.PORT)
 )
 
+/*
+TODO: webpack-dev-server thins
+//--content-base dist" //webpack-dev-server --config './webpack/webpack.config.js
+//"webpack-dev-server --content-base dist"
+*/

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'react-redux '
+import { createStore, applyMiddleware } from 'redux'
 import axios from 'axios'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
@@ -30,7 +30,5 @@ export const getMemoryBoard = () => dispatch => {
         ))
 }
 
-//const tempStore = []
-
-const store = createStore(memoryReducer, applyMiddleware(thunkMiddleware, createLogger))
-export default store
+export const store = createStore(memoryReducer, applyMiddleware(thunkMiddleware, createLogger))
+//export default store

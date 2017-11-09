@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Game from './components/Game.jsx'
+import Root from './Root'
 
+/*
 class Main extends React.Component {
     render() {   
         return (
@@ -11,6 +12,7 @@ class Main extends React.Component {
         )
     }
 }
+*/
 
 const app = document.getElementById('app')
-ReactDOM.render(<Game />, app);
+ReactDOM.render(Root, app);
