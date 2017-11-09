@@ -1,19 +1,8 @@
 const {db, Emoji} = require('.')
 // const fs = require('fs')
-const Q = require('Q')
+//const Q = require('Q')
 const path = require('path');
-const Promise = require("bluebird");
-
-//const emojiData = require('gemoji')
-
-// const values = Object.keys(emojiData).map(function(key) {
-//     return emojiData[key]
-// });
-// //console.log("-------------------->", values)
-
-// const one = values[0] ;
-// console.log("--------one------------>", one)
-
+//const Promise = require("bluebird");
 
 
 
@@ -21,17 +10,6 @@ const Promise = require("bluebird");
 // var promise = fs_readFile('emojis.txt')
 // promise.then(console.log, console.error)
 
-
-
-
-/*
-category: 'nature',
-  description: 'dog face',
-  names: [ 'dog' ],
-  tags: [ 'pet' ],
-  name: 'dog',
-  emoji: '🐶' }
-  */
 
 const readFile = Promise.promisify(require("fs").readFile);
 

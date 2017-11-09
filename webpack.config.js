@@ -1,6 +1,7 @@
 //webpeck.config.js
 
 const path = require('path')
+
 const config = {
     entry: './src/app.js',
     output: {
@@ -15,7 +16,8 @@ const config = {
                 exclude: /node_modules/
             }
         ]
-    }
+    },
+    
 }
 
 module.exports = config

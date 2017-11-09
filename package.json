@@ -4,18 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack-dev-server --content-base dist"
+    "start": "webpack-dev-server --content-base dist --history-api-fallback true",
+    "server": "nodemon ./src/server/server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.17.0",
     "bluebird": "^3.5.1",
     "express": "^4.16.2",
     "gemoji": "^4.2.0",
+    "react-p5-wrapper": "0.0.4",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "sequelize": "^4.20.3",
     "webpack": "^3.8.1",
