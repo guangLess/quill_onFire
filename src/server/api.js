@@ -12,7 +12,7 @@ router.get('/board', (req, res, next) => {
             category: 'nature'
         }
     }).then( data => {
-        console.log("data------->", data)
+        console.log("data--get Length----->", data.length)
         res.status(200).json(data)
     }
     )

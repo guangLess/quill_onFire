@@ -1,7 +1,16 @@
 import { createStore, applyMiddleware } from 'redux'
 import axios from 'axios'
 import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
+//import {createLogger} from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension'
+
+//🙈🦁🐺🐳🦍🦌🐕🐿🌍'🐉', '🐲',
+
+const memoryStack = [ '🌳','🌴', '__',
+                     '🌲', '🌱', '🍀', 
+                     '🌵', '🌿', '️🍃' ] //🌿
+
+const testMemory = ['x','0','x','0','x','0','x','0'];
 
 //action 
 const CREATE_BOARD = 'CREATE_BOARD'
@@ -12,8 +21,9 @@ const createBoard = (memories) => ({
     memories
 })
 
-//reducer
-const memoryReducer = (state = [], action) => {
+
+//reducer default test = ['x','0','x','0','x','0','x','0']
+const memoryReducer = (state = memoryStack, action) => {
     switch (action.type){
         case CREATE_BOARD:
             return action.memories
@@ -22,13 +32,36 @@ const memoryReducer = (state = [], action) => {
     }
 }
 
-//Thunk 
 export const getMemoryBoard = () => dispatch => {
-    axios.get('/api/board')
-        .then(res => dispatch(
-            createBoard(res.data)
-        ))
+    dispatch(createBoard(memoryStack))
 }
 
-export const store = createStore(memoryReducer, applyMiddleware(thunkMiddleware, createLogger))
-//export default store
+//Helper methods
+const swapArrayElements = (arr, indexA, indexB) => {
+    var temp = arr[indexA];
+    arr[indexA] = arr[indexB];
+    arr[indexB] = temp;
+}
+
+const formatArrayToObj = (array) => {
+    let tmpObj = {}
+    return array.reduce((obj, curr, index) => {
+        tmpObj[index] = curr
+        return tmpObj
+    }, {})
+}
+
+export const shiftMemories = (shiftStack, index) => dispatch => {
+    swapArrayElements(shiftStack, index, (index+1) % 7)//modular for easier swap
+    //console.log("shiftMemories", shiftStack)    
+    dispatch(createBoard(shiftStack))
+}
+
+
+const middleware = composeWithDevTools(applyMiddleware(
+    thunkMiddleware
+    // createLogger({collapsed: true})
+  ))
+
+const store = createStore(memoryReducer, middleware)
+export default store
