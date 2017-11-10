@@ -28,7 +28,7 @@ export default class Square extends React.Component {
 
     return (  
         <button className="square" onClick={this.clickHandler}>
-          <p className="boardIndex">{x[0]}</p>  
+          <p className="boardIndex">{this.props.boardIndex}</p>  
           <p>{x[1]}</p>
           <p className="index">{x[0]}</p>
         </button>

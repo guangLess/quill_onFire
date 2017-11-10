@@ -21,8 +21,8 @@ class Board extends React.Component {
     // this.props.mountMemories(group)
 
   }
-  renderSquare(ele, group) {
-    return <Square part={ele} onWine={this.onWine} group={group} updatBoard={this.props.updatBoard} />;
+  renderSquare(ele, index, group) {
+    return <Square part={ele} boardIndex={index} onWine={this.onWine} group={group} updatBoard={this.props.updatBoard} />;
   }
 
   render() {
@@ -35,7 +35,7 @@ class Board extends React.Component {
         {
           group.map((ele, index) => (
             <div key={ index }>
-              {this.renderSquare(ele, group)}
+              {this.renderSquare(ele, index, group)}
             </div>
           ))
         }
@@ -47,7 +47,7 @@ class Board extends React.Component {
 const mapStateToProps = state => {
   //console.log("mounted starts-changed->", state)
   // trim the strct
-  let values = Object.values(state)
+  let values = state // Object.values(state)
   //console.log("after valude--->", values)
   
   return {

@@ -13,13 +13,20 @@ const swapArrayElements = (arr, indexA, indexB) => {
     arr[indexB] = temp;
 }
 
+// const formatArrayToObj = (array) => {
+//     let tmpObj = {}
+//     return array.reduce((obj, curr, index) => {
+//         //console.log(obj, curr, index)
+//         tmpObj[index] = [index, curr]
+//         return tmpObj
+//     }, {})
+// }
+
 const formatArrayToObj = (array) => {
-    let tmpObj = {}
-    return array.reduce((obj, curr, index) => {
-        //console.log(obj, curr, index)
-        tmpObj[index] = [index, curr]
-        return tmpObj
-    }, {})
+  return array.reduce((collect, curr, index) => {
+       collect.push([index, curr])
+       return collect
+  }, [])
 }
 
 //🙈🦁🐺🐳🦍🦌🐕🐿🌍'🐉', '🐲',
