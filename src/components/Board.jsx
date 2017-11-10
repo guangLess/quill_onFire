@@ -21,20 +21,21 @@ class Board extends React.Component {
     // this.props.mountMemories(group)
 
   }
-  renderSquare(ele, index, group) {
-    return <Square part={[index, ele]} onWine={this.onWine} group={group} updatBoard={this.props.updatBoard} />;
+  renderSquare(ele, group) {
+    return <Square part={ele} onWine={this.onWine} group={group} updatBoard={this.props.updatBoard} />;
   }
 
   render() {
-    //console.log("board.props === ", this.props.parts)
     
     let group = this.props.parts
+ // console.log("board.props === ", group[1][0])
+
     return (
       <div className="game-board">
         {
           group.map((ele, index) => (
-            <div key={index}>
-              {this.renderSquare(ele, index, group)}
+            <div key={ index }>
+              {this.renderSquare(ele, group)}
             </div>
           ))
         }
@@ -44,9 +45,13 @@ class Board extends React.Component {
 }
 
 const mapStateToProps = state => {
-  //console.log("mounted starts-changed->", state[0])
+  //console.log("mounted starts-changed->", state)
+  // trim the strct
+  let values = Object.values(state)
+  //console.log("after valude--->", values)
+  
   return {
-    parts: state
+    parts: values
   }
 }
 

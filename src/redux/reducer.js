@@ -3,6 +3,24 @@ import axios from 'axios'
 import thunkMiddleware from 'redux-thunk'
 //import {createLogger} from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { format } from 'path';
+
+
+//Helper methods
+const swapArrayElements = (arr, indexA, indexB) => {
+    var temp = arr[indexA];
+    arr[indexA] = arr[indexB];
+    arr[indexB] = temp;
+}
+
+const formatArrayToObj = (array) => {
+    let tmpObj = {}
+    return array.reduce((obj, curr, index) => {
+        //console.log(obj, curr, index)
+        tmpObj[index] = [index, curr]
+        return tmpObj
+    }, {})
+}
 
 //🙈🦁🐺🐳🦍🦌🐕🐿🌍'🐉', '🐲',
 
@@ -21,7 +39,6 @@ const createBoard = (memories) => ({
     memories
 })
 
-
 //reducer default test = ['x','0','x','0','x','0','x','0']
 const memoryReducer = (state = memoryStack, action) => {
     switch (action.type){
@@ -32,23 +49,13 @@ const memoryReducer = (state = memoryStack, action) => {
     }
 }
 
+//Action creators
 export const getMemoryBoard = () => dispatch => {
-    dispatch(createBoard(memoryStack))
-}
-
-//Helper methods
-const swapArrayElements = (arr, indexA, indexB) => {
-    var temp = arr[indexA];
-    arr[indexA] = arr[indexB];
-    arr[indexB] = temp;
-}
-
-const formatArrayToObj = (array) => {
-    let tmpObj = {}
-    return array.reduce((obj, curr, index) => {
-        tmpObj[index] = curr
-        return tmpObj
-    }, {})
+    //fomate board first 
+    let formated = formatArrayToObj(memoryStack)
+    //let oV = Object.values(formated)
+    //console.log("formated", formated)
+    dispatch(createBoard(formated))
 }
 
 export const shiftMemories = (shiftStack, index) => dispatch => {
@@ -56,7 +63,6 @@ export const shiftMemories = (shiftStack, index) => dispatch => {
     //console.log("shiftMemories", shiftStack)    
     dispatch(createBoard(shiftStack))
 }
-
 
 const middleware = composeWithDevTools(applyMiddleware(
     thunkMiddleware

@@ -10,6 +10,11 @@ body {
     font-size: 16px;
     font-weight: 100;
   }
+  .boardIndex {
+    font-size: 20px;
+    font-weight: bold;
+    color: red
+  }
   
   .game-board div{
     /* display: table; */
@@ -18,22 +23,18 @@ body {
     height: 33.33%;
   }
   
-  .status {
-    margin-bottom: 10px;
-  }
-  
   .square {
     background: #fff;
     border: 1px solid #999;
     color: green;
     font-family: "Fira Code";
     float: left;
-    font-size: 90px;
+    font-size: 80px;
     font-weight: 100;
     line-height: 4px;
     height: 100%;
-    margin-right: -1px;
-    margin-top: -1px;
+    margin-right: 1px;
+    margin-top: 1px;
     padding: 0;
     text-align: center;
     width: 100%;

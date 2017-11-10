@@ -24,10 +24,11 @@ export default class Square extends React.Component {
 
   render(){
       let x = this.props.part
-     //console.log("parts--->", this.props) 
+     //console.log("parts--->", x) 
 
     return (  
         <button className="square" onClick={this.clickHandler}>
+          <p className="boardIndex">{x[0]}</p>  
           <p>{x[1]}</p>
           <p className="index">{x[0]}</p>
         </button>
