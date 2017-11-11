@@ -36,10 +36,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "fs": "0.0.1-security",
+    "pts": "^0.2.2",
     "q": "^1.5.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "victor": "^1.1.0"
   }
 }

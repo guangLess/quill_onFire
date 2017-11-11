@@ -1,7 +1,6 @@
 import React from 'react'
 import Board from './Board.jsx'
-//import P5Wrapper from 'react-p5-wrapper'
-//import {sketch} from './sketch'
+
 import { connect } from 'react-redux'
 import {getMemoryBoard } from '../redux/reducer'
 
@@ -18,11 +17,11 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div>
+
         <h1>🙈🙈Hello</h1>   
           <Board parts={parts}/>
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
@@ -55,4 +54,4 @@ export default connect(
 
 /*
 <P5Wrapper sketch={sketch} />
-*/
+*/                  

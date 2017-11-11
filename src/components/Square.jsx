@@ -1,11 +1,6 @@
 import React from 'react'
 require('../helper')
 
-var swapArrayElements = function(arr, indexA, indexB) {
-    var temp = arr[indexA];
-    arr[indexA] = arr[indexB];
-    arr[indexB] = temp;
-  }
 
 export default class Square extends React.Component {
   constructor(props) {
@@ -15,22 +10,35 @@ export default class Square extends React.Component {
 
   clickHandler (evt) {
       evt.preventDefault()
-      let index = this.props.part[0]
       let tempGroup = this.props.group.slice()
-      this.props.updatBoard(tempGroup, index)
 
-      this.props.onWine(this.props.part, tempGroup)//pass the data back to upstream
+
+
+
+
+      //console.log('who got clicked ===>', this.props.part)
+      let index = this.props.boardIndex
+
+
+      this.props.updatBoard(tempGroup, this.props.emptyIndex, this.props.nextIndex) //update to store
+
+      //get Index after updated 
+        //logic to disable button
+
+      //let boardIndex = this.props.group.indexOf(this.props.part[1])      
+      this.props.onWine(this.props.part, index)//pass the data back to upstream
   }
 
   render(){
       let x = this.props.part
-     //console.log("parts--->", x) 
+      //console.log("square->", x)
+      //button disable check 
 
     return (  
-        <button className="square" onClick={this.clickHandler}>
+        <button className="square" onClick={this.clickHandler} disabled={this.props.active}>
           <p className="boardIndex">{this.props.boardIndex}</p>  
-          <p>{x[1]}</p>
-          <p className="index">{x[0]}</p>
+          <p>{x.part}</p>
+          <p className="index">{x.baseIndex}</p>
         </button>
     )
   }

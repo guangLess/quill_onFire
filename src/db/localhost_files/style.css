@@ -1,6 +1,6 @@
 body {
     font: 24px "Century Gothic", Futura, sans-serif;
-    margin: 0;
+    margin: 15px;
   }
   
   ol, ul {
@@ -21,12 +21,11 @@ body {
     /* flex:1; */
     width: 33.33%;
     height: 33.33%;
-    transition: 1s all ease-in;
   }
   
   .square {
-    background: transparent;
-    border: 1px solid #fff;
+    background: #fff;
+    border: 1px solid #999;
     color: green;
     font-family: "Fira Code";
     float: left;
@@ -55,7 +54,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     width: 40%;
-    background-color: transparent;
+    background-color: pink;
     margin: 100px auto 0;
     height: calc(40vw);
   }
@@ -64,14 +63,3 @@ body {
     margin-left: 20px;
   }
   
-  .sketch {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-  }
-  .canvas {
-    height: 100%;
-    width: 150%;
-  }

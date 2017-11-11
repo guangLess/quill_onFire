@@ -1,6 +1,6 @@
 
-export const sketch = (p) => {
-    //let rotation = 10;
+export const sketch = (p , rotation) => {
+     rotation = 10;
       p.setup = function () {
         p.createCanvas(600, 400, p.WEBGL);
       };
@@ -15,7 +15,7 @@ export const sketch = (p) => {
         p.background(100);
         p.noStroke();
         p.push();
-        //p.rotateY(p.mouseX);
+        p.rotateY(rotation);
         p.box(100);
         p.pop();
       };

@@ -27,13 +27,5 @@ const Root = (
      </Provider>
 )
 
-/*
-const Root = (
-    <div>
-        <Game />
-    </div>
-)
-*/
-
 export default Root
 
