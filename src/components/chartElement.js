@@ -3,13 +3,9 @@ import { Circle} from 'pts';
 export const chartElement = (pts) => {
 
         pts.renderChart = () => {
-            //let isEnabled = pts.props.enablePointer
-            //if (isEnabled) {
             let w = pts.props.data * 20
             let d = pts.props.data * 10
-            //}
 
-            // console.log("--->renderChart- index of the board-->", pts.props.data)
             // let bar = Circle.fromCenter([w * 2, 100],  20 )       
             // pts.form.fillOnly("#f6c").circle(bar)
             // draw cricle 
@@ -33,9 +29,8 @@ export const chartElement = (pts) => {
             pts.form.fill("#f03").points(ins2, 8, "circle");
     }
     pts.space.add({           
-        animate:() => {
+        animate: () => {
           if (pts.form.ready) pts.renderChart();
         }
       })
-
-}
+    }

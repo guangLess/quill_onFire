@@ -12,9 +12,7 @@ export default class PtsChart extends React.Component {
     creatChart(){        
         this.space = new CanvasSpace( this.ptsCanvas ).setup({bgcolor: "#fe3", resize: true, retina: true})
         this.form = this.space.getForm()
-        //chartElement(this)
         console.log("updated---->", this.props.enablePointer)
-
           // with pointer 
          // /*
         const chartElementPointer = () => {
@@ -36,41 +34,24 @@ export default class PtsChart extends React.Component {
           });
         }
 
-
         this.props.enablePointer
         ? chartElementPointer()
         : chartElement(this)
-
-        //this.space.bindMouse().bindTouch().play();
-          
-         // this.space.bindMouse().bindTouch().play();
-         
-          //*/
 }
 
 
-
-    componentDidUpdate(){
+ componentDidUpdate(){
         //console.log("updated---->", this.props.enablePointer)
         this.creatChart()
-        
-        
-        //console.log("updated", this.props)
-        this.props.enablePointer 
+       this.props.enablePointer 
         ? this.space.bindMouse().bindTouch().play()
         : this.space.playOnce(0)
-        
-        
-        //this.disAblePointer()
-        //this.enablePointer()
-       //this.space.playOnce(0)     
-        //this.space.bindMouse().bindTouch().play();
     }
 
     render(){        
         return  (
         <div className="canvas">
-            <canvas ref={(canvas) => { this.ptsCanvas = canvas; }}></canvas>  
+            <canvas ref={(canvas) => { this.ptsCanvas = canvas; }}></canvas>
         </div>)
     }
 }
