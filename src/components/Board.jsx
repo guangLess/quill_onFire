@@ -11,7 +11,7 @@ class Board extends React.Component {
   constructor(){
     super()
     this.onWine = this.onWine.bind(this)
-    this.state = { move: 1 , isSorted: false , pointerState: true}
+    this.state = { move: 1 , isSorted: false , pointerState: false}
     this.handleClick = this.handleClick.bind(this)
   }
 
