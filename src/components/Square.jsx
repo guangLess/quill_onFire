@@ -1,6 +1,4 @@
 import React from 'react'
-require('../helper')
-
 
 export default class Square extends React.Component {
   constructor(props) {
@@ -11,36 +9,24 @@ export default class Square extends React.Component {
   clickHandler (evt) {
       evt.preventDefault()
       let tempGroup = this.props.group.slice()
-
-
-
-
-
-      //console.log('who got clicked ===>', this.props.part)
       let index = this.props.boardIndex
+      
+      this.props.onWine(this.props.part, index)//pass the data back to upstream      
 
-
-      this.props.updatBoard(tempGroup, this.props.emptyIndex, this.props.nextIndex) //update to store
-
-      //get Index after updated 
-        //logic to disable button
-
-      //let boardIndex = this.props.group.indexOf(this.props.part[1])      
-      this.props.onWine(this.props.part, index)//pass the data back to upstream
+      //update board (action swap)
+      this.props.updatBoard(tempGroup, this.props.emptyIndex, this.props.nextIndex) //update to store    
+      //pass index of the click back to its parent for drawing sketch
   }
 
   render(){
       let x = this.props.part
       //console.log("square->", x)
-      //button disable check 
-
     return (  
-        <button className="square" onClick={this.clickHandler} disabled={this.props.active}>
-          <p className="boardIndex">{this.props.boardIndex}</p>  
+        <button className="square" onClick={this.clickHandler} disabled={this.props.disable}>
+          <p className="boardIndex">{x.baseIndex}</p>  
           <p>{x.part}</p>
-          <p className="index">{x.baseIndex}</p>
+          <p className="index">{this.props.boardIndex}</p>
         </button>
     )
   }
 }
-

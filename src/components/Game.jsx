@@ -17,14 +17,16 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div>
-
-        <h1>🙈🙈Hello</h1>   
-          <Board parts={parts}/>
+        <div className="content">
+          <h1>🙈🙈Hello</h1> 
+        </div>  
+        
+        <Board parts={parts}/>
         </div>
-        <div className="game-info">
-          <ol>{/* TODO */}</ol>
+          <div className="game-info">
+            <ol>{/* TODO */}</ol>
+          </div>
         </div>
-      </div>
     );
   }
 }

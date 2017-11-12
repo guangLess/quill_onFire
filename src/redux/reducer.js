@@ -3,32 +3,21 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 //import {createLogger} from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
-//import { format } from 'path';
+import {shuffle, swapArrayElements,formatArrayToObj } from '../helper'
+
+/*
+test imogies 
+🙈🦁🐺🐳🦍🦌🐕🐿🌍'🐉', '🐲',
+*/
 
 
-//Helper methods
-const swapArrayElements = (arr, indexA, indexB) => {
-    var temp = arr[indexA];
-    arr[indexA] = arr[indexB];
-    arr[indexB] = temp;
-}
+const memoryStack = [ '🥚', '🌲', '🍃','🍂',
+                      '🍀', '️🌴', '🍪',
+                      '🌿', 'x' ]  // 🌿 🌾🎋🍂🍁🌵 🌍🐾 ❄️🌼'🌱', 
 
-const formatArrayToObj = (array) => {
-  return array.reduce((collect, curr, index) => {
-      let obj = { baseIndex: index,
-                   part: curr
-                    }
-       collect.push(obj) //[index, curr]
-       return collect
-  }, [])
-}
 
-//🙈🦁🐺🐳🦍🦌🐕🐿🌍'🐉', '🐲',
-
-const memoryStack = [ '🌳','🌴', 'x',
-                     '🌲', '🌱', '🍀', 
-                     '🌵', '🌿', '️🍃' ] //🌿
-
+/*const memoryStack = [ '🥚', '🌲', '🍃','🍂','x','🌿' ]*/
+                                          
 const testMemory = ['x','0','x','0','x','0','x','0'];
 
 //action 
@@ -54,15 +43,16 @@ const memoryReducer = (state = memoryStack, action) => {
 export const getMemoryBoard = () => dispatch => {
     //fomate board first 
     let formated = formatArrayToObj(memoryStack)
+    //shuffle(formated)
     dispatch(createBoard(formated))
 }
 
 export const shiftMemories = (shiftStack, emptyIndex, nextIndex) => dispatch => {
-
+    //check then swap
     swapArrayElements(shiftStack, emptyIndex, nextIndex)//modular for easier swap
-    //console.log("shiftMemories", shiftStack)    
     dispatch(createBoard(shiftStack))
 }
+
 
 const middleware = composeWithDevTools(applyMiddleware(
     thunkMiddleware

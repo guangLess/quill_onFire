@@ -10,44 +10,51 @@ class Board extends React.Component {
   constructor(){
     super()
     this.onWine = this.onWine.bind(this)
-    this.state = { move: 1 }
+    this.state = { move: 1 , pointerState: true}
+    this.handleClick = this.handleClick.bind(this)
+  }
+  componentDidUpdate(prevProps, prevState){
+      //check the board     
+  let isSorted = this.props.parts.reduce((result, curr, i ) => {
+      return result && (curr.baseIndex === i)
+     }, (this.props.parts[0].baseIndex === 0) )
+    console.log("isSorted", isSorted)
+     
   }
 
-  setSquareNumbers(n) {
-    return Array(n).fill(1)
+  handleClick() {
+    //evt.preventDefault()
+    this.setState(prevState => ({
+      pointerState: !prevState.pointerState
+    }));
   }
 
-  //maybe added selected in the store later.
+  //added selected in the store later.
   onWine(part) {
-
     let index = this.props.parts.indexOf(part)
-    // console.log('onWine function x===>', x[0], x[1], index)
-    //console.log('-----parts------>',this.props.parts)
-    //let locationOfempty = this.props.parts.findIndex((ele) => ele.part === 'x')
-    //console.log(' now===>', part, index,locationOfempty)
-    //this.props.move.setState(index);
+    //check board 
     this.setState({move: index})
   }
-  renderSquare(ele, index, group) {
 
+  renderSquare(ele, index, group) {
     let locationOfempty = group.findIndex((each) => each.part === 'x')
     let locationOfnext = group.findIndex((each) => each.part === ele.part)
     let distance = Math.abs(locationOfempty - locationOfnext) 
-    //console.log(" (locationOfnext % 3 !== 0",  (locationOfnext % 3 === 0))
-   let active = !( distance === 3 ||  
-    (distance === 1 ))
-    
-    //if(locationOfempty + 1 === )
+    let disable = !( distance === 3 || (distance === 1 ))
+    //check edge cases 
+    if (locationOfempty % 3 === 0 && (locationOfempty - locationOfnext === 1) ) disable = true
+    if (locationOfempty % 3 === 2 && ( locationOfnext - locationOfempty  === 1) ) disable = true
 
-    //console.log("--locations->", locationOfempty, locationOfnext)
-    return (<Square part={ele} boardIndex={index} onWine={this.onWine} group={group} updatBoard={this.props.updatBoard} 
-              active={active} emptyIndex={locationOfempty} nextIndex={locationOfnext} />)
+    return (<Square
+      part={ele} boardIndex={index} onWine={this.onWine} group={group} updatBoard={this.props.updatBoard}
+      disable={disable} emptyIndex={locationOfempty} nextIndex={locationOfnext}
+    />)
   }
 
   render() {
     let group = this.props.parts
     let dataToSketch = this.state.move
-    //console.log("------this.state.move->", dataToSketch)
+    let enablePointer = this.state.pointerState
 
     return (
       <div>    
@@ -61,17 +68,23 @@ class Board extends React.Component {
         }
       </div>
       <div className="sketch">
-          <PtsChart data={dataToSketch} /> 
+         {/*{ <PtsChart data={dataToSketch} enablePointer={enablePointer}/>}*/}
+      </div>
+      <div className="control">
+        <span className="bordIndex"> Board Index : {this.state.move} </span>
+        <button onClick={this.handleClick} className="enAbleSetch">
+          {enablePointer ? 'ON' : 'OFF'}
+        </button>
       </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
-  //console.log("mounted starts-changed->", state)
   // trim the strct
   let values = state // Object.values(state)
+  //shuffer 
   return {
     parts: values,
   }
