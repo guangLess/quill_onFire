@@ -15,17 +15,13 @@ class Board extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps){
       //check the board     
    let isSorted = this.props.parts.reduce((result, curr, i ) => {
       return result && (curr.baseIndex === i)
      }, (this.props.parts[0].baseIndex === 0) )
-    //console.log("isSorted", isSorted)
     if (isSorted) win = true
-    console.log('win=',win)
-    // divStyle = isSorted ?
-    //     { backgroundImage: 'black' }
-    //   : {}
+    console.log('win=', win)
   }
 
   handleClick() {
@@ -59,8 +55,6 @@ class Board extends React.Component {
     let group = this.props.parts
     let dataToSketch = this.state.move
     let enablePointer = this.state.pointerState
-    // let win = this.state.isSorted
-    //let win = true
 
     return (
       <div>
@@ -77,7 +71,7 @@ class Board extends React.Component {
         }
       </div>
       <div className="sketch">
-         {/*{ <PtsChart data={dataToSketch} enablePointer={enablePointer}/>}*/}
+         { <PtsChart data={dataToSketch} enablePointer={enablePointer} />}
       </div>
       <div className="control">
         <span className="bordIndex"> Board Index : {this.state.move} </span>

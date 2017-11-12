@@ -38,7 +38,7 @@ const memoryReducer = (state = memoryStack, action) => {
 export const getMemoryBoard = () => dispatch => {
     //fomate board first 
     let formated = formatArrayToObj(memoryStack)
-    //shuffle(formated)
+    shuffle(formated)
     dispatch(createBoard(formated))
 }
 

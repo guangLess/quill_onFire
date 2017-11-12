@@ -23,8 +23,8 @@ export default class PtsChart extends React.Component {
         this.space = new CanvasSpace( this.ptsCanvas ).setup({bgcolor: "#fe3", resize: true, retina: true})
         this.form = this.space.getForm()   
         //console.log("--->PtsChart--->",this.props, this.space.size)
-        /*
-        this.renderChart = () => {/*
+        
+        this.renderChart = () => {
             let isEnabled = this.props.enablePointer
             //if (isEnabled) {
                 let w = this.props.data * 20
@@ -54,8 +54,8 @@ export default class PtsChart extends React.Component {
             this.form.fill( "rgba(50, 50, 50, .25)" ).circle( ct );
             this.form.fill( "#fff" ).points( ins1, 8, "circle" );
             this.form.fill( "#f03" ).points( ins2, 8, "circle" );
-        *///}
-/*
+        }
+
           this.space.add({           
             // render
             animate:() => {
@@ -66,7 +66,7 @@ export default class PtsChart extends React.Component {
          //this.space.bindMouse().bindTouch().play()
         //this.space.playOnce(0);  
 
-*/
+
           // with pointer 
           /*
           this.space.add( (time, ftime) => {
@@ -98,7 +98,7 @@ export default class PtsChart extends React.Component {
         console.log("updated")
         //this.disAblePointer()
         //this.enablePointer()
-        //this.space.playOnce(0)     
+        this.space.playOnce(0)     
         //this.space.bindMouse().bindTouch().play();
     }
 
