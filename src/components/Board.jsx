@@ -5,12 +5,13 @@ import {getMemoryBoard, shiftMemories } from '../redux/reducer'
 
 // try drawing stuff 
 import PtsChart from './PtsChart.jsx'
+let win = false
 
 class Board extends React.Component {
   constructor(){
     super()
     this.onWine = this.onWine.bind(this)
-    this.state = { move: 1 , pointerState: true}
+    this.state = { move: 1 , isSorted: false , pointerState: true}
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -19,7 +20,9 @@ class Board extends React.Component {
    let isSorted = this.props.parts.reduce((result, curr, i ) => {
       return result && (curr.baseIndex === i)
      }, (this.props.parts[0].baseIndex === 0) )
-    console.log("isSorted", isSorted)
+    //console.log("isSorted", isSorted)
+    if (isSorted) win = true
+    console.log('win=',win)
     // divStyle = isSorted ?
     //     { backgroundImage: 'black' }
     //   : {}
@@ -56,10 +59,15 @@ class Board extends React.Component {
     let group = this.props.parts
     let dataToSketch = this.state.move
     let enablePointer = this.state.pointerState
+    // let win = this.state.isSorted
+    //let win = true
 
     return (
       <div>
-      <div className="game-board">
+      {/* <div className="game-board"> */}
+      <div className={
+       win ? 'game-board winner' : 'game-board'
+      }>
         {
           group.map((ele, index) => (
             <div key={ index }>
