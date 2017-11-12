@@ -13,17 +13,19 @@ class Board extends React.Component {
     this.state = { move: 1 , pointerState: true}
     this.handleClick = this.handleClick.bind(this)
   }
+
   componentDidUpdate(prevProps, prevState){
       //check the board     
-  let isSorted = this.props.parts.reduce((result, curr, i ) => {
+   let isSorted = this.props.parts.reduce((result, curr, i ) => {
       return result && (curr.baseIndex === i)
      }, (this.props.parts[0].baseIndex === 0) )
     console.log("isSorted", isSorted)
-     
+    // divStyle = isSorted ?
+    //     { backgroundImage: 'black' }
+    //   : {}
   }
 
   handleClick() {
-    //evt.preventDefault()
     this.setState(prevState => ({
       pointerState: !prevState.pointerState
     }));
@@ -32,7 +34,6 @@ class Board extends React.Component {
   //added selected in the store later.
   onWine(part) {
     let index = this.props.parts.indexOf(part)
-    //check board 
     this.setState({move: index})
   }
 
@@ -57,7 +58,7 @@ class Board extends React.Component {
     let enablePointer = this.state.pointerState
 
     return (
-      <div>    
+      <div>
       <div className="game-board">
         {
           group.map((ele, index) => (
@@ -82,9 +83,7 @@ class Board extends React.Component {
 }
 
 const mapStateToProps = state => {
-  // trim the strct
-  let values = state // Object.values(state)
-  //shuffer 
+  let values = state
   return {
     parts: values,
   }

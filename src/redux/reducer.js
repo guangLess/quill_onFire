@@ -5,11 +5,6 @@ import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {shuffle, swapArrayElements,formatArrayToObj } from '../helper'
 
-/*
-test imogies 
-🙈🦁🐺🐳🦍🦌🐕🐿🌍'🐉', '🐲',
-*/
-
 
 const memoryStack = [ '🥚', '🌲', '🍃','🍂',
                       '🍀', '️🌴', '🍪',
