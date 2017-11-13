@@ -24,6 +24,7 @@ class Board extends React.Component {
     console.log('win=', win)
   }
 
+  //toggle the button for <PTsChart />
   handleClick() {
     this.setState(prevState => ({
       pointerState: !prevState.pointerState
