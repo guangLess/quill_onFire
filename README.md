@@ -1,10 +1,12 @@
 # 0 to 8
+https://guangless.github.io/0_to_8/
 
 A 3 x 3 board with numbers range from 0 to 8. With one X as an empty space to let its neighbors move. The goal is to position all the squares in order from 0 to 8 (represented in emojis!🌲) I am NOT good at solving it, but the making of this game is not bad! Here is a walk through of the logics. 
 
 **Code break down:**
 Reducer - create board, shift board.
 Each Square model is Swift Struct like, a board is a collection of Squares.
+
 ```
 //Redux State looks like this 
 [{baseIndex: 0, part: "🥚"},
