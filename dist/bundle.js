@@ -34605,10 +34605,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Game);
 
-/*
-<P5Wrapper sketch={sketch} />
-*/
-
 /***/ }),
 /* 119 */
 /***/ (function(module, exports, __webpack_require__) {

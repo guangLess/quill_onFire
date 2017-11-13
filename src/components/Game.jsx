@@ -53,7 +53,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Game)
-
-/*
-<P5Wrapper sketch={sketch} />
-*/                  
