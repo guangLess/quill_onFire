@@ -66,7 +66,7 @@ The drawings in <PTsChart /> is the sample code on the site, that I implemented 
 
 Button on the left browser, toggle its shape's state from free mouse motion to motion controlled by the board clicked index. 
 ```
-// Board.jsx toggles for <PTsChart />
+// Board.jsx toggles for <PTsChart /> must be a better way to do this. 
 handleClick() {
     this.setState(prevState => ({
     pointerState: !prevState.pointerState
