@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config ./webpack.config.js --progress --colors",
-    "start": "node ./src/app.js"
-
+    "build": "webpack",
+    "start": "webpack-dev-server --content-base dist --history-api-fallback true"
   },
   "author": "",
   "license": "ISC",
