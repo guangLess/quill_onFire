@@ -1,0 +1,109 @@
+body {
+    font: 24px "Fira Code", Futura, sans-serif;
+    margin: 0;
+  }
+  
+  ol, ul {
+    padding-left: 30px;
+  }
+  .index {
+    font-size: 16px;
+    font-weight: 100;
+  }
+  .boardIndex {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(89, 195, 77)
+  }
+  
+  .game-board div{
+    /* display: table; */
+    /* flex:1; */
+    width: 33.33%;
+    height: 33.33%;
+    transition: 1s all ease-in;
+  }
+  
+  .square {
+    background: transparent;
+    border: 1px solid rgb(227, 223, 223);
+    color: green;
+    font-family: "Fira Code";
+    float: left;
+    font-size: 80px;
+    font-weight: 100;
+    line-height: 4px;
+    height: 100%;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .square:focus {
+    outline: none;
+  }
+  
+  .kbd-navigation .square:focus {
+    background: #ddd;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 3;
+  }
+
+  .game-board {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 40%;
+    background-color: transparent;
+    margin: 100px auto 0;
+    height: calc(40vw);
+    z-index: 2;
+    position:relative;
+    transition: opacity 1s ease-in;
+    opacity: 1;
+  }
+
+  .game-board.winner {
+    opacity: 0.10;
+  }
+  
+  .game-info {
+    margin-left: 20px;
+  }
+  
+  .sketch {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+  .canvas {
+    height: 100%;
+    width: 160%;
+  }
+
+  .control {
+    z-index: 3;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 20px;
+  }
+
+  .control .bordIndex {
+    font-size: 20px;
+  }
+  
+  .control .enAbleSetch {
+    font-size: 20px;
+    background: rgb(210, 232, 246);
+    border: 2px solid blue;
+    padding: 3px 20px;
+  }
