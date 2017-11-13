@@ -1,10 +1,10 @@
 # 0 to 8
 
-A 3 x 3 board with numbers range from 0 to 8. With one X as an empty space to let its neighbors move. The goal is to position all the grids in order from 0 to 8 (represented in emojis!🌲) I am NOT good at solving it, but the making of this game is not bad! Here is a walk through of the logics. 
+A 3 x 3 board with numbers range from 0 to 8. With one X as an empty space to let its neighbors move. The goal is to position all the squares in order from 0 to 8 (represented in emojis!🌲) I am NOT good at solving it, but the making of this game is not bad! Here is a walk through of the logics. 
 
 **Code break down:**
 Reducer - create board, shift board.
-Each Square model is  Swift Struct like, a board is a collections of Squares.
+Each Square model is Swift Struct like, a board is a collection of Squares.
 ```
 //Redux State looks like this 
 [{baseIndex: 0, part: "🥚"},
@@ -30,11 +30,11 @@ export const shiftMemories = (shiftStack, emptyIndex, nextIndex) => dispatch => 
 ```
 
 <Game/> get the emojis, passed them to <Board /> 
-<Board /> configures the emojis, pass each emoji with needed props to <Square /> , and handles the click dispatch. 
+<Board /> configures the emojis, passes each emoji with needed props to <Square />, and handles the click dispatch. 
 ——
-Some important logics in the game:
+Some important logic in the game:
 
-disable/enable Squares base on the position of “X”
+disable/enable Squares based on the position of “X”
 ```
 renderSquare(ele, index, group) {
     let locationOfempty = group.findIndex((each) => each.part === 'x')
