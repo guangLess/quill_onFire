@@ -34,6 +34,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "firebase": "^4.6.2",
     "fs": "0.0.1-security",
+    "immutable": "^3.8.2",
     "pts": "^0.2.2",
     "q": "^1.5.1",
     "react": "^16.0.0",

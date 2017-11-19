@@ -25,7 +25,7 @@ export default class Root extends React.Component {
       }
       componentWillUpdate(nextProps, nextState){
 
-        console.log('update --->', nextProps.delta)
+        console.log('update --->', nextProps.delta.toJS())
         //let x = JSON.parse(nextProps.delta)
         
       }

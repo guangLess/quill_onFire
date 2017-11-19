@@ -1,4 +1,5 @@
 import React from 'react'
+const { Map } = require('immutable')
 import ReactQuill from 'react-quill'
 import {CustomToolbar} from './QuillEditor'
 import FireContainer from './FireContainer.jsx'
@@ -8,7 +9,7 @@ class Root extends React.Component {
     
   constructor(props) {
     super(props)
-    this.state = { text: '', delta: [], speed: 1, react: '' } // You can also pass a Quill Delta here
+    this.state = { text: '', delta: Map({}), speed: 1, react: '' } // You can also pass a Quill Delta here
     this.buttonHandler = this.buttonHandler.bind(this)
     this.update = this.update.bind(this)
     //Quill props
@@ -25,16 +26,16 @@ class Root extends React.Component {
   update(value, delta, source, editor) {
     //var contents;
     //console.log("value--->", value)
-    //console.log('delta--->',  delta)
+    console.log('delta-before convert to immutible js-->',  delta)
     //let change = new Delta()
     //console.log("change--->",  change)
 
     //console.log("value--->", source)
     //console.log("editor--->", editor.getContents())
-    let deltaString = JSON.stringify(delta)
+    //let deltaString = JSON.stringify(delta)
     //console.log("delta String--->",  deltaString)
-    let deltaArray = delta.ops
-    this.setState({text: value, delta: deltaArray})
+    const dMap = Map(delta)
+    this.setState({text: value, delta: dMap})
   }
   
   componentDidUpdate() {
