@@ -1,109 +1,55 @@
 body {
-    font: 24px "Fira Code", Futura, sans-serif;
-    margin: 0;
-  }
-  
-  ol, ul {
-    padding-left: 30px;
-  }
-  .index {
-    font-size: 16px;
-    font-weight: 100;
-  }
-  .boardIndex {
-    font-size: 30px;
-    font-weight: bold;
-    color: rgb(89, 195, 77)
-  }
-  
-  .game-board div{
-    /* display: table; */
-    /* flex:1; */
-    width: 33.33%;
-    height: 33.33%;
-    transition: 1s all ease-in;
-  }
-  
-  .square {
-    background: transparent;
-    border: 1px solid rgb(227, 223, 223);
-    color: green;
-    font-family: "Fira Code";
-    float: left;
-    font-size: 80px;
-    font-weight: 100;
-    line-height: 4px;
-    height: 100%;
-    margin-right: 0px;
-    margin-top: 0px;
-    padding: 0;
-    text-align: center;
-    width: 100%;
-  }
-  
-  .square:focus {
-    outline: none;
-  }
-  
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }
-  
-  .content {
-    position: relative;
-    z-index: 3;
-  }
+  background: #f3f1f2;
+  font-size: 18px;
+}
 
-  .game-board {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 40%;
-    background-color: transparent;
-    margin: 100px auto 0;
-    height: calc(40vw);
-    z-index: 2;
-    position:relative;
-    transition: opacity 1s ease-in;
-    opacity: 1;
-  }
+#app {
+  margin: 1rem auto;
+  /* max-width: 40rem; */
+  width: 90%;
+}
 
-  .game-board.winner {
-    opacity: 0.10;
-  }
-  
-  .game-info {
-    margin-left: 20px;
-  }
-  
-  .sketch {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-  }
-  .canvas {
-    height: 100%;
-    width: 160%;
-  }
+#app .ql-container {
+  /* min-height: 10em; */
+  /* border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em; */
+  background: #fefcfc;
+  font-size: 19px;
+  border: none;
+  height: unset;
+}
 
-  .control {
-    z-index: 3;
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    left: 20px;
-  }
+#app .ql-snow .ql-picker {
+  font-size: 28px;
+  line-height: 1.25;
+  height: unset;
+}
 
-  .control .bordIndex {
-    font-size: 20px;
-  }
-  
-  .control .enAbleSetch {
-    font-size: 20px;
-    background: rgb(210, 232, 246);
-    border: 2px solid blue;
-    padding: 3px 20px;
-  }
+#app .ql-snow .ql-picker.ql-header {
+  width: 170px;
+}
+
+#app .ql-snow .ql-picker.ql-color {
+  width: 40px;
+  line-height: 1;
+}
+
+#app .ql-snow .ql-bold {
+  height: 30px;
+}
+
+#app .ql-snow .ql-insertStar {
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  line-height: 1;
+}
+
+#app .ql-toolbar {
+  background: rgb(223, 239, 255);
+  color: white;
+  /* border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em; */
+  border: none;
+  padding: 10px 10px;
+}
