@@ -2,3 +2,4 @@ node_modules
 src/db/localhost_files/bundle.js
 src/fire.js
 bundle.js.map
+.vscode
