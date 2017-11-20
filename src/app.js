@@ -2,6 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Root from './Root.jsx'
 import ReactQuill from 'react-quill'
+import fire from './fire'
+
+const { Map } = require('immutable')
+
 //import { insertStar } from './quillEditor'
 
 
@@ -37,7 +41,28 @@ Root.formats = [
 ]
 
 
+
+const testingDelta = {
+  ops: [
+    { insert: 'Gandalf ', attributes: { bold: true } },
+    { insert: 'the ' },
+    { insert: 'White', attributes: { color: '#fff' } }
+  ]
+}
+
+// need to turn this into a promise
+let tDelta = Map(testingDelta)
+
+// const getContentFromFire = () => {
+//    let rootRef = fire.database().ref().child('delta')
+//    rootRef.once('value', snap => {
+//       console.log("getAll content first=", snap.val())
+//       tDelta = Map(snap.val())
+//     })
+// }
+
+
 ReactDOM.render(
-    <Root placeholder={'Write something...'} />,
+    <Root placeholder={'Write something...'} startingContent={''} />,
     document.getElementById('app')
   )

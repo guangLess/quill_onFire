@@ -8,12 +8,14 @@ export default class Root extends React.Component {
         this.updateDB = this.updateDB.bind(this)
         //firebase props
         this.rootRef = fire.database().ref().child('react');
-        this.speedRef = this.rootRef.child('speed')  
+        this.speedRef = this.rootRef.child('speed')
+
+        this.deltaRef = fire.database().ref().child('delta');
       }
 
       componentDidMount(){
         console.log('props --->', this.props)
-        
+
       this.speedRef.on('value', snap => {
           console.log('snap.val() --->', snap.val())
           this.setState({
@@ -23,13 +25,23 @@ export default class Root extends React.Component {
            console.log(errorObject.code)
         })
       }
-      componentWillUpdate(nextProps, nextState){
 
-        console.log('update --->', nextProps.delta.toJS())
-        //let x = JSON.parse(nextProps.delta)
+      componentDidUpdate(nextProps, nextState){
+        //let ops = nextProps.delta.toJS()
         
+        let ops = nextProps.currentEditor.toJS()
+        console.log('update --->', ops)
+
+        // this.deltaRef.child("ops").on('child_changed', function(childSnapshot, prevChildKey) {
+        //     console.log("child changed")
+        //   })
+
+        this.deltaRef.set(ops).then(
+            //console.log('Synchronization succeeded')
+        ).catch(
+            //console.log('Synchronization failed')
+        )
       }
-      
 
       updateDB(e) {
         e.preventDefault();
@@ -39,7 +51,7 @@ export default class Root extends React.Component {
         this.rootRef.set({
           speed: x
         });
-    
+
         this.rootRef.on('value', snap => {
           this.setState({react: JSON.stringify(snap)})
         })
