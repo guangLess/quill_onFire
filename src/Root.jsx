@@ -4,13 +4,14 @@ import ReactQuill from 'react-quill'
 import {CustomToolbar} from './QuillEditor'
 import FireContainer from './FireContainer.jsx'
 import fire from './fire'
-
+import Delta from "quill-delta";
+const deltas = fire.database().ref('deltas')
 
 class Root extends React.Component {
     
   constructor(props) {
     super(props)
-    this.state = { text: this.props.startingContent, delta: Map({}), currentEditor: Map({}), speed: 1, react: '' } // You can also pass a Quill Delta here
+    this.state = { text: this.props.startingContent, doc: new Delta, currentEditor: Map({}), speed: 1, react: '' } // You can also pass a Quill Delta here
     this.buttonHandler = this.buttonHandler.bind(this)
     this.update = this.update.bind(this)
     //Quill props
@@ -25,27 +26,36 @@ class Root extends React.Component {
     //retrive Data when loaded from firebase
   }
 
-  componentDidMount(){
-    this.attachQuillRefs()
-    const testingDelta = {
-      ops: [
-        { insert: 'Gandfdfdfdfdalf ', attributes: { bold: true } },
-        { insert: 'the ' },
-        { insert: 'White', attributes: { color: '#fff' } }
-      ]
+  doc = new Delta
+  applyDelta(delta) {
+    const {quill, editor} = this
+    if (quill.isEqualValue(delta, quill.lastDeltaChangeSet)) {
+      this.doc = editor.getContents()
+      return
     }
-    let sContent = this.reactQuillRef.getEditor()
-    sContent.setContents(testingDelta)
-    
+
+    this.doc = this.doc.compose(delta)
+    editor.setContents(this.doc, 'silent')
+  }
+
+  componentDidMount(){
+    console.log('Quill editor:', this.editor)
+    console.log('last changed delta set:', )
+    deltas.on('child_added', snap => this.applyDelta(snap.val()))
+    // this.attachQuillRefs()
+    // const testingDelta = {
+    //   ops: [
+    //     { insert: 'Gandfdfdfdfdalf ', attributes: { bold: true } },
+    //     { insert: 'the ' },
+    //     { insert: 'White', attributes: { color: '#fff' } }
+    //   ]
+    // }
+
+    // let sContent = this.reactQuillRef.getEditor()
+    // sContent.setContents(testingDelta)
+    // update here 
     console.log("did mount" )
-
   }
-
-  updateFire() {
-    
-  }
-
-
 
 
   componentDidUpdate(nextProps, nextState){
@@ -59,7 +69,7 @@ class Root extends React.Component {
 
   //update 
   update(value, delta, source, editor) {
-    //console.log("update called",  this.reactQuillRef)
+    console.log("update called")
    
     //var contents;
     //console.log("value--->", value)
@@ -71,16 +81,17 @@ class Root extends React.Component {
     //console.log('editor.getContents()--->', editor.getContents())
     //let deltaString = JSON.stringify(delta)
     //console.log("delta String--->",  deltaString)
-    const dMap = Map(delta)
-    let content = editor.getContents()
-    const currentEditor = Map(content)
+    // const dMap = Map(delta)
+    // let content = editor.getContents()
+    // const currentEditor = Map(content)
 
-    this.setState({text: value, delta: dMap, currentEditor: currentEditor})
+    // this.setState({text: value, delta: dMap, currentEditor: currentEditor})
+    deltas.push(delta)
   }
   
-  componentDidUpdate() {
-    this.attachQuillRefs()
-  }
+  // componentDidUpdate() {
+  //   this.attachQuillRefs()
+  // }
   
   attachQuillRefs () {
     //console.log("this.reactQuillRef",this.reactQuillRef)
@@ -101,6 +112,10 @@ class Root extends React.Component {
 
   }
 
+  quillDidMount = quill => {
+    this.quill = quill
+    this.editor = quill.getEditor()
+  }
 
   render(){
     //   let quillData = this.props.startingContent
@@ -115,8 +130,8 @@ class Root extends React.Component {
           <div className="text-editor" >
           <CustomToolbar />
           <ReactQuill
-            ref={(el) => this.reactQuillRef = el}
-            value={this.state.text}
+            ref={this.quillDidMount}
+            defaultValue=''
             onChange={this.update}
             modules={Root.modules}
             formats={Root.formats}
@@ -129,7 +144,7 @@ class Root extends React.Component {
             className="quill-contents"                
           />
           </div>
-          <FireContainer content={this.state.text} delta={this.state.delta} currentEditor={this.state.currentEditor}/>
+          {/* <FireContainer content={this.state.text} delta={this.state.delta} currentEditor={this.state.currentEditor}/> */}
         </div>
       );
   }

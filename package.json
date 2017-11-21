@@ -37,6 +37,7 @@
     "immutable": "^3.8.2",
     "pts": "^0.2.2",
     "q": "^1.5.1",
+    "quill-delta": "^3.6.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-quill": "^1.1.0",
